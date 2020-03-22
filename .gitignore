@@ -1,0 +1,8 @@
+*.sublime-project
+*.sublime-workspace
+crecknn.cpp
+crecknn.cpython*
+build/*
+.ipynb*/*
+__pycache__/*
+venv/*
