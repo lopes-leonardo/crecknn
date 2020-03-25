@@ -10,13 +10,16 @@ The obtained results indicate superior accuracy in most clustering tasks when co
 Results also demonstrate that the clustering step can improve the results of background subtraction approaches in the majority of cases.
 
 ## Overview
+
 ![Process Workflow](/img/process_image.png)
 
 The **crecknn** works based on three stages:
 
-1. The input data is applied to a [manifold learning algorithm](https://www.sciencedirect.com/science/article/abs/pii/S0031320317301978) in order to improve the dataset's rankings
-2. Based on the new enhanced rankings retrieved from the stage 1, the algorithm is repeated with a low neighborhood size in order to extract high-reliable initial cluster configuration from the dataset
-3. The initial clustering configuration is agglomerated based on the enhanced distance measure obtained on stage 1
+1. Ranked lists are extracted from the input data, by using the Euclidean distance
+2. Those ranked lists are applied to a [manifold learning algorithm](https://www.sciencedirect.com/science/article/abs/pii/S0031320317301978) in order to retrieve a new distance measure and an enhanced set of ranked lists from the data
+2. Based on the new enhanced ranked lists retrieved from the stage 1, the algorithm is repeated with a low neighborhood size in order to extract high-reliable initial cluster configuration from the dataset
+3. The initial clustering configuration is agglomerated based on the enhanced distance measure, also obtained on stage 1
+
 
 ## Instalation
 
@@ -29,7 +32,6 @@ cd crecknn
 Create and activate a python virtual enviroment:
 
 ```
-
 virtualenv venv
 source venv/bin/activate
 ```
@@ -64,20 +66,20 @@ min_elem | The minimum number of elements of each cluster after the agglomeratio
 
 To utilize the **crecknn**, first import the package on your python code:
 
-```
+```python
 import crecknn
 ```
 (Please note that the python code must be on the same folder where the `make` command was executed)
 
 Then, initialize the cluster object:
 
-```
+```python
 cluster = crecknn.Cluster(k=15, ck=4, min_elem=10)
 ```
 
 Finally, insert the input data:
 
-```
+```python
 cluster.fit(data)
 ```
 
@@ -85,7 +87,7 @@ Notice that `data` must be array-like and can have shape(n, m), being interprete
 
 After the clusterization, the labels can be retrieve by:
 
-```
+```python
 cluster.labels_
 ```
 
@@ -95,6 +97,25 @@ The authors are grateful to the São Paulo Research Foundation - FAPESP (#2013/0
 
 ## Reference
 
-Lopes, L. T. et al. Manifold learning-based clustering approach applied toanomaly detection in surveillance videos. In Proceedings of the 15th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications VISAPP 2020. SCITEPRESS.
+Lopes, L.; Valem, L.; Pedronette, D.; Guilherme, I.; Papa, J.; Santana, M. and Colombo, D. (2020). **Manifold Learning-based Clustering Approach Applied to Anomaly Detection in Surveillance Videos**.In Proceedings of the 15th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 5: VISAPP, ISBN 978-989-758-402-2, ISSN 2184-4321, pages 404-412. DOI: 10.5220/0008974604040412
 
-Please feel free to [contact us](mailto:leonardo.lopes@unesp.br) 
+For more information, experimental procedures and achieved results refer to the final [publication](https://www.scitepress.org/PublicationsDetail.aspx?ID=XNW/adjpjh0=&t=1).
+
+If you use our algorithm, please refer to:
+
+```
+@conference{visapp20,
+author={Leonardo Tadeu Lopes. and Lucas Pascotti Valem. and Daniel Carlos Guimarães Pedronette. and Ivan Rizzo Guilherme. and João Paulo Papa. and Marcos Cleison Silva Santana. and Danilo Colombo.},
+title={Manifold Learning-based Clustering Approach Applied to Anomaly Detection in Surveillance Videos},
+booktitle={Proceedings of the 15th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 5: VISAPP,},
+year={2020},
+pages={404-412},
+publisher={SciTePress},
+organization={INSTICC},
+doi={10.5220/0008974604040412},
+isbn={978-989-758-402-2},
+}
+``` 
+
+
+Feel free to [contact us](mailto:leonardo.lopes@unesp.br) for any doubts or sugestions.
