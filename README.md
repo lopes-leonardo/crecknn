@@ -118,4 +118,4 @@ isbn={978-989-758-402-2},
 ``` 
 
 
-Feel free to [contact us](mailto:leonardo.lopes@unesp.br) for any doubts or sugestions.
+Feel free to [contact us](mailto:leonardo.lopes@unesp.br) for any questions or sugestions.
